@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Alvra · Recorrido 3D</title>
+    <meta name="description" content="Recorrido 3D del desarrollo sobre su terreno real en Puerto Vallarta." />
+    <meta name="theme-color" content="#0b1a1f" />
+    <link rel="icon" href="/brand/icono.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Sofia+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-D2QzGEqb.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CWQrVlpt.css">
+  </head>
+  <body>
+    <canvas id="app" aria-label="Escena 3D del desarrollo"></canvas>
+    <div id="etiquetas"></div>
+
+    <!-- Portada -->
+    <section id="portada">
+      <img class="portada-foto" src="/poster/portada.webp" alt="" onerror="this.remove()" />
+      <div class="portada-velo"></div>
+      <div class="portada-caja">
+        <p class="marca"><span class="marca-sello">A</span><span data-campo="marca">Alvra</span></p>
+        <p class="sobretitulo" data-i18n="portada.sobre">Recorrido 3D · Terreno real</p>
+        <h1 data-campo="nombre">Desarrollo piloto</h1>
+        <p class="bajada"><span data-campo="superficie">—</span> · <span data-campo="lugar">Puerto Vallarta, Jalisco</span></p>
+        <button id="comenzar" class="btn-oro" data-accion="comenzar" disabled>
+          <span data-i18n="portada.cargando">Cargando el terreno…</span>
+        </button>
+        <div class="progreso"><i id="barra"></i></div>
+        <p class="portada-nota" data-i18n="portada.nota">Etapa de estructura: terreno, entorno y lindero. La lotificación se integra con el plano.</p>
+      </div>
+    </section>
+
+    <!-- Interfaz -->
+    <div id="hud" hidden>
+      <header class="barra-sup">
+        <div class="ident">
+          <span class="marca-sello">A</span>
+          <div>
+            <strong data-campo="nombre">Desarrollo piloto</strong>
+            <small><span data-campo="zona">Fluvial Vallarta</span> · <span data-campo="superficie">—</span></small>
+          </div>
+        </div>
+        <nav class="acciones-sup">
+          <div class="idioma" role="group" aria-label="Idioma">
+            <button data-accion="idioma" data-valor="es" class="activo">ES</button>
+            <button data-accion="idioma" data-valor="en">EN</button>
+          </div>
+          <button class="btn-fantasma" data-accion="creditos" data-i18n="sup.creditos">Créditos</button>
+          <a class="btn-oro chico" id="cita" target="_blank" rel="noopener" data-i18n="sup.cita">Agendar cita</a>
+        </nav>
+      </header>
+
+      <nav class="modos" aria-label="Modo de recorrido">
+        <button data-accion="modo" data-valor="aerea" class="activo">
+          <svg viewBox="0 0 24 24"><path d="M3 17l6-9 4 5 3-4 5 8z" /><circle cx="17" cy="6" r="1.6" /></svg>
+          <span data-i18n="modo.aerea">Vista aérea</span>
+        </button>
+        <button data-accion="modo" data-valor="caminar">
+          <svg viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.8" /><path d="M9 21l2.5-6-2-2.5L11 8l3.5 3 3 1M11 8L7.5 9.5 6.5 13M12.5 15.5L15 21" /></svg>
+          <span data-i18n="modo.caminar">Caminar</span>
+        </button>
+        <button data-accion="modo" data-valor="vehiculo">
+          <svg viewBox="0 0 24 24"><path d="M4 15l1.5-5a2 2 0 012-1.4h9a2 2 0 012 1.4L20 15v3H4z" /><circle cx="7.5" cy="18" r="1.6" /><circle cx="16.5" cy="18" r="1.6" /></svg>
+          <span data-i18n="modo.vehiculo">Vehículo</span>
+        </button>
+        <button data-accion="galeria">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2" /><circle cx="9" cy="10" r="1.7" /><path d="M4 17l5-4.5 3.5 3 3-2.5L20 17" /></svg>
+          <span data-i18n="modo.galeria">Renders</span>
+        </button>
+      </nav>
+
+      <aside class="panel" id="panel">
+        <div class="pestanas" role="tablist">
+          <button data-accion="pestana" data-valor="terreno" class="activo" data-i18n="tab.terreno">Terreno</button>
+          <button data-accion="pestana" data-valor="entorno" data-i18n="tab.entorno">Entorno</button>
+          <button data-accion="pestana" data-valor="lotes" data-i18n="tab.lotes">Lotes</button>
+          <button data-accion="pestana" data-valor="renders" data-i18n="tab.renders">Renders</button>
+          <button data-accion="pestana" data-valor="v360" data-i18n="tab.v360">360°</button>
+        </div>
+        <div class="panel-cuerpo">
+          <section data-pestana="terreno">
+            <div class="cifras">
+              <div><small data-i18n="t.superficie">Superficie</small><b id="c-area">—</b><em id="c-area2"></em></div>
+              <div><small data-i18n="t.perimetro">Perímetro</small><b id="c-perimetro">—</b></div>
+              <div><small data-i18n="t.elevacion">Elevación</small><b id="c-elev">—</b><em data-i18n="t.msnm">sobre el nivel del mar</em></div>
+              <div><small data-i18n="t.playa">Playa más cercana</small><b id="c-playa">—</b><em id="c-playa2"></em></div>
+            </div>
+            <h3 data-i18n="t.linderos">Linderos</h3>
+            <table class="tabla" id="tabla-lados"></table>
+            <div data-lotificacion hidden>
+              <h3 data-i18n="lt.titulo">Lotificación (propuesta)</h3>
+              <table class="tabla" id="tabla-lotes"></table>
+              <p class="nota" id="c-lotes"></p>
+            </div>
+            <p class="nota" id="c-centro"></p>
+            <p class="nota" data-i18n="t.precision">Medidas preliminares tomadas del polígono de Google Earth (±1.5 m). Se sustituyen por el levantamiento topográfico.</p>
+          </section>
+          <section data-pestana="entorno" hidden>
+            <p class="nota" data-i18n="e.intro">Distancias en línea recta desde el centro del predio. Toca un lugar para volar hacia él.</p>
+            <ul class="lugares" id="lista-pois"></ul>
+          </section>
+          <section data-pestana="lotes" hidden>
+            <div class="pendiente">
+              <span class="chip" data-i18n="l.etapa">Siguiente etapa</span>
+              <h3 data-i18n="l.titulo">Lotificación interactiva</h3>
+              <p data-i18n="l.texto">Cuando exista el plano, cada lote se pinta sobre este mismo terreno con su estatus, medidas y precio, con filtro y cita por WhatsApp.</p>
+              <ul class="insumos">
+                <li data-i18n="l.i1">Plano de lotificación (DXF/DWG)</li>
+                <li data-i18n="l.i2">Lista de inventario y precios</li>
+                <li data-i18n="l.i3">Amenidades y vialidades internas</li>
+              </ul>
+            </div>
+          </section>
+          <section data-pestana="renders" hidden>
+            <p class="nota" data-i18n="gal.intro">Imágenes de cada zona del proyecto. Toca una para verla a pantalla completa.</p>
+            <p class="nota aviso" data-galeria-vacia data-i18n="gal.vacia">Los renders finales se generan cuando los modelos estén detallados. Mientras tanto, toca una zona para ir a ella en 3D.</p>
+            <ul class="renders" id="lista-renders"></ul>
+          </section>
+          <section data-pestana="v360" hidden>
+            <div class="pendiente">
+              <span class="chip" data-i18n="l.etapa">Siguiente etapa</span>
+              <h3 data-i18n="v.titulo">Vistas 360°</h3>
+              <p data-i18n="v.texto">Panoramas de las amenidades y de la vista desde cada nivel, enlazados con marcadores dentro de la escena.</p>
+            </div>
+          </section>
+        </div>
+      </aside>
+
+      <div class="vistas" role="group" aria-label="Vistas">
+        <button data-accion="vista" data-valor="predio" data-i18n="vista.predio">Predio</button>
+        <button data-accion="vista" data-valor="cenital" data-i18n="vista.cenital">Cenital</button>
+        <button data-accion="vista" data-valor="bahia" data-i18n="vista.bahia">Hacia la bahía</button>
+        <button data-accion="vista" data-valor="entorno" data-i18n="vista.entorno">Entorno</button>
+        <span class="sep"></span>
+        <button data-accion="capa" data-valor="medidas" class="activo" data-i18n="capa.medidas">Medidas</button>
+        <button data-accion="capa" data-valor="pois" class="activo" data-i18n="capa.pois">Lugares</button>
+        <button data-accion="capa" data-valor="calles" class="activo" data-i18n="capa.calles">Calles</button>
+        <button data-accion="capa" data-valor="lindero" class="activo" data-i18n="capa.lindero">Lindero</button>
+        <button data-accion="capa" data-valor="lotes" class="activo" data-i18n="capa.lotes" data-lotificacion hidden>Lotes</button>
+      </div>
+
+      <div class="reloj">
+        <button class="redondo" data-accion="reproducir" aria-label="Reproducir el paso del tiempo">
+          <svg viewBox="0 0 24 24" id="ico-play"><path d="M8 5l11 7-11 7z" /></svg>
+        </button>
+        <div class="reloj-centro">
+          <div class="reloj-cabeza">
+            <b id="hora-texto">10:00 a. m.</b>
+            <span id="sol-texto"></span>
+          </div>
+          <input id="hora" type="range" min="5.5" max="20.5" step="0.05" value="10" aria-label="Hora del día" />
+        </div>
+        <div class="momentos">
+          <button data-accion="momento" data-valor="manana" data-i18n="hora.manana">Mañana</button>
+          <button data-accion="momento" data-valor="mediodia" data-i18n="hora.mediodia">Mediodía</button>
+          <button data-accion="momento" data-valor="atardecer" data-i18n="hora.atardecer">Atardecer</button>
+        </div>
+      </div>
+
+      <div class="minimapa">
+        <canvas id="minimapa" width="352" height="352"></canvas>
+        <span class="norte">N</span>
+      </div>
+
+      <div class="ayuda" id="ayuda" hidden></div>
+      <section class="control-vehiculo" id="velocimetro" hidden aria-label="Control del vehículo">
+        <h4 data-i18n="veh.control">Control del vehículo</h4>
+        <div class="cv-velocidad">
+          <span class="cv-limite" title="Límite de velocidad">40</span>
+          <b id="vel">0</b><small>km/h</small>
+        </div>
+        <div class="cv-camaras" role="group" aria-label="Cámara">
+          <button data-accion="cam-auto" data-valor="persecucion" class="activo">
+            <svg viewBox="0 0 24 24"><path d="M3 8h11v8H3zM14 11l6-3v8l-6-3" /></svg><span data-i18n="veh.persecucion">Persecución</span>
+          </button>
+          <button data-accion="cam-auto" data-valor="alta" data-i18n="veh.alta">Alta</button>
+        </div>
+        <button class="cv-salir" data-accion="salir-auto">
+          <svg viewBox="0 0 24 24"><path d="M10 5H5v14h5M15 8l4 4-4 4M19 12H9" /></svg>
+          <span data-i18n="veh.salir">Salir del vehículo</span><kbd>E</kbd>
+        </button>
+      </section>
+
+      <!-- Galería de renders -->
+      <div id="galeria" hidden role="dialog" aria-modal="true" aria-label="Galería de renders">
+        <img class="gal-foto-b" alt="" />
+        <img class="gal-foto" alt="" />
+        <div class="gal-velo"></div>
+        <header class="gal-cabeza">
+          <div>
+            <h2 class="gal-titulo"></h2>
+            <p><span class="gal-contador"></span><span class="gal-tipo"></span></p>
+          </div>
+          <div class="gal-botones">
+            <button class="gal-btn" data-gal="ver3d"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5" /></svg><span data-i18n="gal.ver3d">Ver en 3D</span></button>
+            <button class="gal-btn" data-gal="cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg><span data-i18n="ficha.cerrar">Cerrar</span><kbd>Esc</kbd></button>
+          </div>
+        </header>
+        <button class="gal-flecha ant" data-gal="ant" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <button class="gal-flecha sig" data-gal="sig" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+        <nav class="gal-tira" aria-label="Miniaturas"></nav>
+      </div>
+
+      <dialog id="creditos">
+        <h3 data-i18n="cr.titulo">Créditos y fuentes</h3>
+        <ul id="lista-creditos"></ul>
+        <p class="nota" data-i18n="cr.nota">Escena generada a partir de datos abiertos; imágenes ilustrativas. No sustituye un levantamiento topográfico.</p>
+        <form method="dialog"><button class="btn-fantasma" data-i18n="cr.cerrar">Cerrar</button></form>
+      </dialog>
+    </div>
+
+  </body>
+</html>

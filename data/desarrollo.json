@@ -1,0 +1,29 @@
+{
+  "slug": "piloto-vallarta",
+  "nombre": "Desarrollo piloto",
+  "zona": "Fluvial Vallarta",
+  "ciudad": "Puerto Vallarta, Jalisco",
+  "marca": "Alvra",
+  "whatsapp": "",
+  "zonaHorariaUTC": -6,
+  "caminar": {
+    "e": -33,
+    "n": -84,
+    "rumbo": 18.6
+  },
+  "etapa": "estructura",
+  "vehiculoModelo": {
+    "url": "/models/vehiculo.glb",
+    "largo": 4.6,
+    "giro": 180
+  },
+  "nota": "Nombre, marca, número de WhatsApp y textos son provisionales. La lotificación (lotificacion.json) es un anteproyecto generado con tools/fraccionamiento/proponer.py; «caminar» arranca en el acceso principal, mirando hacia la caseta. «precios» son provisionales: precio por m² por uso (H habitacional, C comercial) y, en «lotes», precios fijos por clave de lote que tienen prioridad.",
+  "precios": {
+    "moneda": "MXN",
+    "m2": {
+      "H": 9500,
+      "C": 14500
+    },
+    "lotes": {}
+  }
+}

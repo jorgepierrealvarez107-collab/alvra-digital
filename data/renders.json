@@ -1,0 +1,61 @@
+{
+  "nota": "Zonas de la galería. «imagenes» lleva capturas provisionales del recorrido (tipo «captura») hasta que existan los renders finales (tipo «render»). Los renders se generan con IA a partir de la captura de cada zona SOLO cuando los modelos de SketchUp estén detallados; «prompt» es la indicación base. Coordenadas en metros locales (e = este, n = norte, h = altura sobre el terreno).",
+  "zonas": [
+    {
+      "id": "acceso",
+      "titulo": { "es": "Acceso principal", "en": "Main entrance" },
+      "descripcion": { "es": "Caseta de vigilancia, plumas y camellón de llegada.", "en": "Gatehouse, barriers and arrival median." },
+      "camara": { "e": -31, "n": -77, "h": 2.4, "mira": { "e": -21, "n": -53, "h": 2.6 }, "hora": 17 },
+      "imagenes": [],
+      "prompt": "Photorealistic architectural render of a gated residential community entrance in Puerto Vallarta, Mexico: modern gatehouse with flat concrete roof, entry and exit barrier arms, landscaped median with palms and bougainvillea, new asphalt with crosswalk, warm late-afternoon sun, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "casa-club",
+      "titulo": { "es": "Casa club", "en": "Clubhouse" },
+      "descripcion": { "es": "Palapa con área de mesas, barra y sanitarios.", "en": "Palapa with seating, bar and restrooms." },
+      "camara": { "e": 22, "n": -30, "h": 12, "mira": { "e": -4.3, "n": -4.9, "h": 1.5 }, "hora": 17 },
+      "imagenes": [],
+      "prompt": "Photorealistic render of a tropical clubhouse palapa with thatched roof, wooden columns, polished concrete floor, bar and lounge furniture, lush tropical landscaping, Puerto Vallarta, golden hour, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "alberca",
+      "titulo": { "es": "Alberca", "en": "Pool" },
+      "descripcion": { "es": "Alberca y chapoteadero con asoleadero.", "en": "Pool and kids' pool with sun deck." },
+      "camara": { "e": 19, "n": 31, "h": 5.5, "mira": { "e": -0.6, "n": 15, "h": 0.4 }, "hora": 16.5 },
+      "imagenes": [],
+      "prompt": "Photorealistic render of a resort-style residential swimming pool with turquoise water, light travertine deck, sun loungers and umbrellas, palms, Puerto Vallarta, late afternoon, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "padel",
+      "titulo": { "es": "Canchas de pádel", "en": "Padel courts" },
+      "descripcion": { "es": "Dos canchas junto a la casa club.", "en": "Two courts next to the clubhouse." },
+      "camara": { "e": -32, "n": -42, "h": 8, "mira": { "e": -9, "n": -22, "h": 1 }, "hora": 17 },
+      "imagenes": [],
+      "prompt": "Photorealistic render of two outdoor padel courts with blue turf, glass walls and black steel mesh, LED light poles, tropical landscaping around, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "asadores",
+      "titulo": { "es": "Estar y asadores", "en": "Lounge and grills" },
+      "descripcion": { "es": "Estar techado con cuatro asadores.", "en": "Covered lounge with four grills." },
+      "camara": { "e": 22, "n": 48, "h": 3.2, "mira": { "e": 5, "n": 34, "h": 1.4 }, "hora": 18 },
+      "imagenes": [],
+      "prompt": "Photorealistic render of a covered outdoor lounge with built-in barbecue grills, stone counters, wooden pergola, string lights at dusk, tropical garden, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "areas-verdes",
+      "titulo": { "es": "Áreas verdes", "en": "Green areas" },
+      "descripcion": { "es": "Área de cesión arbolada.", "en": "Tree-lined public green area." },
+      "camara": { "e": 42, "n": -66, "h": 14, "mira": { "e": 10, "n": -90, "h": 0 }, "hora": 16 },
+      "imagenes": [],
+      "prompt": "Photorealistic render of a landscaped public park in a residential community, walking paths, native trees and palms, lawn, benches, Puerto Vallarta, afternoon light, keep the exact geometry and camera of the reference image."
+    },
+    {
+      "id": "vista-general",
+      "titulo": { "es": "Vista general", "en": "Overview" },
+      "descripcion": { "es": "Lotificación, vialidades y amenidades.", "en": "Lots, streets and amenities." },
+      "camara": { "e": 120, "n": -150, "h": 110, "mira": { "e": 0, "n": -10, "h": 0 }, "hora": 17.5 },
+      "imagenes": [],
+      "prompt": "Photorealistic aerial render of a new gated residential subdivision in Puerto Vallarta, Mexico, with clubhouse, pool, padel courts, tree-lined streets and lots, mountains and bay in the background, golden hour, keep the exact geometry and camera of the reference image."
+    }
+  ]
+}

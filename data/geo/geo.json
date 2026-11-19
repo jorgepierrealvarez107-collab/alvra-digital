@@ -1,0 +1,178 @@
+{
+ "desarrollo": {
+  "slug": "piloto-vallarta",
+  "nombre": "Desarrollo piloto",
+  "ciudad": "Puerto Vallarta, Jalisco"
+ },
+ "marco": {
+  "epsg": 32613,
+  "origenE": 476274,
+  "origenN": 2282829,
+  "lat0": 20.644572992165493,
+  "lon0": -105.22775561821976,
+  "elevRef": 4.9,
+  "convergenciaGrados": -0.08,
+  "nota": "Local ENU en metros: e = Este − origenE, n = Norte − origenN, h = altura − elevRef. Three.js: x = e, y = h, z = −n."
+ },
+ "anillos": [
+  {
+   "id": "r0",
+   "lado": 640,
+   "sat": "sat_r0.webp",
+   "px": 2560
+  },
+  {
+   "id": "r1",
+   "lado": 2560,
+   "sat": "sat_r1.webp",
+   "px": 2048,
+   "dem": "dem_r1.bin",
+   "n": 257,
+   "paso": 10,
+   "min": -0.28,
+   "max": 36.92
+  },
+  {
+   "id": "r2",
+   "lado": 10240,
+   "sat": "sat_r2.webp",
+   "px": 2048,
+   "dem": "dem_r2.bin",
+   "n": 257,
+   "paso": 40,
+   "min": -6074.34,
+   "max": 858.05
+  },
+  {
+   "id": "r3",
+   "lado": 40960,
+   "sat": "sat_r3.webp",
+   "px": 2048,
+   "dem": "dem_r3.bin",
+   "n": 257,
+   "paso": 160,
+   "min": -1117.54,
+   "max": 2014.16
+  }
+ ],
+ "predio": {
+  "fuente": "Polígono trazado en Google Earth (proyecto «Proyecto de mapa sin título», 18-11-2026). Vértices leídos en pantalla con precisión aproximada de ±1.5 m; sustituir por el KML exportado o el levantamiento topográfico cuando exista.",
+  "vertices": [
+   {
+    "id": "A",
+    "lat": 20.645872,
+    "lon": -105.228037,
+    "e": -29.11,
+    "n": 143.8
+   },
+   {
+    "id": "B",
+    "lat": 20.645539,
+    "lon": -105.227508,
+    "e": 25.94,
+    "n": 106.87
+   },
+   {
+    "id": "C",
+    "lat": 20.645313,
+    "lon": -105.226968,
+    "e": 82.16,
+    "n": 81.78
+   },
+   {
+    "id": "D",
+    "lat": 20.643388,
+    "lon": -105.227272,
+    "e": 50.2,
+    "n": -131.21
+   },
+   {
+    "id": "E",
+    "lat": 20.643323,
+    "lon": -105.227381,
+    "e": 38.83,
+    "n": -138.39
+   },
+   {
+    "id": "F",
+    "lat": 20.643783,
+    "lon": -105.228237,
+    "e": -50.27,
+    "n": -87.36
+   },
+   {
+    "id": "G",
+    "lat": 20.644097,
+    "lon": -105.228623,
+    "e": -90.43,
+    "n": -52.55
+   },
+   {
+    "id": "H",
+    "lat": 20.644165,
+    "lon": -105.228645,
+    "e": -92.71,
+    "n": -45.02
+   }
+  ],
+  "areaM2": 30645,
+  "perimetro": 719.61,
+  "lados": [
+   {
+    "de": "A",
+    "a": "B",
+    "largo": 66.29,
+    "rumbo": 123.86
+   },
+   {
+    "de": "B",
+    "a": "C",
+    "largo": 61.56,
+    "rumbo": 114.05
+   },
+   {
+    "de": "C",
+    "a": "D",
+    "largo": 215.37,
+    "rumbo": 188.53
+   },
+   {
+    "de": "D",
+    "a": "E",
+    "largo": 13.45,
+    "rumbo": 237.73
+   },
+   {
+    "de": "E",
+    "a": "F",
+    "largo": 102.68,
+    "rumbo": 299.8
+   },
+   {
+    "de": "F",
+    "a": "G",
+    "largo": 53.15,
+    "rumbo": 310.92
+   },
+   {
+    "de": "G",
+    "a": "H",
+    "largo": 7.87,
+    "rumbo": 343.15
+   },
+   {
+    "de": "H",
+    "a": "A",
+    "largo": 199.24,
+    "rumbo": 18.62
+   }
+  ]
+ },
+ "creditos": {
+  "satelite": "Esri World Imagery (Esri, Maxar, Earthstar Geographics). Uso de evaluación: revisar licencia antes de publicar.",
+  "relieve": "Terrain Tiles (Mapzen/Tilezen, AWS Open Data; INEGI en México).",
+  "osm": "© Colaboradores de OpenStreetMap (ODbL): edificios, calles y lugares.",
+  "edificios": "Edificios: Overture Maps Foundation, con datos de OpenStreetMap (ODbL), Google Open Buildings (CC BY 4.0) y Microsoft ML Buildings (CDLA-Permissive-2.0)."
+ },
+ "generado": "2026-11-18T17:54:08.409Z"
+}
