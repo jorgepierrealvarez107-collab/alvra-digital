@@ -1,5 +1,5 @@
 {
-  "nota": "Zonas de la galería. «imagenes» lleva capturas provisionales del recorrido (tipo «captura») hasta que existan los renders finales (tipo «render»). Los renders se generan con IA a partir de la captura de cada zona SOLO cuando los modelos de SketchUp estén detallados; «prompt» es la indicación base. Coordenadas en metros locales (e = este, n = norte, h = altura sobre el terreno).",
+  "nota": "Zonas de la galería. «imagenes» lleva capturas provisionales del recorrido (tipo «captura») hasta que existan los renders finales (tipo «render»). Los renders se generan con IA a partir de la captura de cada zona SOLO cuando los modelos de SketchUp estén detallados; «prompt» es la indicación base. Coordenadas en metros locales (e = este, n = norte, h = altura sobre el terreno). Tipo «360»: panorama equirectangular 2:1 generado con IA (ElevenLabs · Seedream 5 Pro) que se abre en el visor esférico; se prepara con tools/assets/panorama360.mjs (cierra la costura y crea la miniatura).",
   "zonas": [
     {
       "id": "acceso",
@@ -26,6 +26,11 @@
         {
           "src": "/renders/acceso.webp",
           "tipo": "render"
+        },
+        {
+          "src": "/renders/acceso-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/acceso-360-mini.webp"
         }
       ],
       "prompt": "Photorealistic architectural render of a gated residential community entrance in Puerto Vallarta, Mexico: modern gatehouse with flat concrete roof, entry and exit barrier arms, landscaped median with palms and bougainvillea, new asphalt with crosswalk, warm late-afternoon sun, keep the exact geometry and camera of the reference image."
@@ -55,6 +60,11 @@
         {
           "src": "/renders/casa-club.webp",
           "tipo": "render"
+        },
+        {
+          "src": "/renders/casa-club-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/casa-club-360-mini.webp"
         }
       ],
       "prompt": "Photorealistic render of a tropical clubhouse palapa with thatched roof, wooden columns, polished concrete floor, bar and lounge furniture, lush tropical landscaping, Puerto Vallarta, golden hour, keep the exact geometry and camera of the reference image."
@@ -84,6 +94,11 @@
         {
           "src": "/renders/alberca.webp",
           "tipo": "render"
+        },
+        {
+          "src": "/renders/alberca-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/alberca-360-mini.webp"
         }
       ],
       "prompt": "Photorealistic render of a resort-style residential swimming pool with turquoise water, light travertine deck, sun loungers and umbrellas, palms, Puerto Vallarta, late afternoon, keep the exact geometry and camera of the reference image."
@@ -113,6 +128,11 @@
         {
           "src": "/renders/padel.webp",
           "tipo": "render"
+        },
+        {
+          "src": "/renders/padel-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/padel-360-mini.webp"
         }
       ],
       "prompt": "Photorealistic render of two outdoor padel courts with blue turf, glass walls and black steel mesh, LED light poles, tropical landscaping around, keep the exact geometry and camera of the reference image."
@@ -142,6 +162,11 @@
         {
           "src": "/renders/asadores.webp",
           "tipo": "render"
+        },
+        {
+          "src": "/renders/asadores-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/asadores-360-mini.webp"
         }
       ],
       "prompt": "Photorealistic render of a covered outdoor lounge with built-in barbecue grills, stone counters, wooden pergola, string lights at dusk, tropical garden, keep the exact geometry and camera of the reference image."
@@ -167,7 +192,13 @@
         },
         "hora": 16
       },
-      "imagenes": [],
+      "imagenes": [
+        {
+          "src": "/renders/areas-verdes-360.webp",
+          "tipo": "360",
+          "miniatura": "/renders/areas-verdes-360-mini.webp"
+        }
+      ],
       "prompt": "Photorealistic render of a landscaped public park in a residential community, walking paths, native trees and palms, lawn, benches, Puerto Vallarta, afternoon light, keep the exact geometry and camera of the reference image."
     },
     {
